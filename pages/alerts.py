@@ -15,3 +15,12 @@ class AlertsPage():
     def accept_alert(self):
         alert=self.driver.switch_to.alert
         alert.accept()
+        
+    def click_js_confirm_button_to_running_alert(self):
+        self.driver.find_element(By.XPATH,"//*[@id='confirmButton']").click()
+        
+    def alert_accept(self):
+        self.driver.switch_to.alert.accept()
+        
+    def alert_confirm_text(self):
+        return self.driver.find_element(By.XPATH,"//*[@id='confirmResult']").text
