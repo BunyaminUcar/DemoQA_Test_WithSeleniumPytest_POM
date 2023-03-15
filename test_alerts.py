@@ -10,7 +10,7 @@ from pages.alerts import AlertsPage
 
 @pytest.mark.usefixtures("setup")
 class TestAlerts():
-    @pytest.mark.skip(reason="not implemented yet") 
+   
     def test_catch_alert(self):
         self.driver.implicitly_wait(10)
         self.driver.get("https://demoqa.com/alerts")
@@ -20,7 +20,7 @@ class TestAlerts():
         time.sleep(1)#wait for alert to appear       
         alerts.accept_alert()
         assert message=="You clicked a button"
-    @pytest.mark.skip(reason="not implemented yet") 
+ 
     def test_alert_box_confirm(self):
         self.driver.implicitly_wait(10)
         self.driver.get("https://demoqa.com/alerts")
@@ -32,7 +32,7 @@ class TestAlerts():
         confirm=alert.alert_confirm_text()
         assert confirm=="You selected Ok"
         assert alert_text=="Do you confirm action?"
-    @pytest.mark.skip(reason="not implemented yet") 
+    
     def test_alert_box_not_confirm(self):
         self.driver.implicitly_wait(10)
         self.driver.get("https://demoqa.com/alerts") 
@@ -44,7 +44,7 @@ class TestAlerts():
         confirm=alert.alert_confirm_text()
         assert confirm=="You selected Cancel"
         assert alert_text=="Do you confirm action?" 
-    @pytest.mark.skip(reason="not implemented yet") 
+   
     def test_alert_box_send_prompt(self):
         self.driver.implicitly_wait(10)
         self.driver.get("https://demoqa.com/alerts")
@@ -54,7 +54,7 @@ class TestAlerts():
         time.sleep(1)#wait for alert to appear
         result=alert.alert_send_prompt_and_accept_then_get_key(key)
         assert result=="You entered "+key
-    @pytest.mark.skip(reason="not implemented yet")     
+       
     def test_alert_box_send_prompt_and_cancel(self):
         self.driver.implicitly_wait(10)
         self.driver.get("https://demoqa.com/alerts")
@@ -74,10 +74,8 @@ class TestAlerts():
         modal.click_small_modal_button()
         time.sleep(1)#wait for modal to appear
         result, model_content=modal.small_modal_visibility_and_content()
-        
         assert result==True
         assert model_content=="This is a small modal. It has very less content"
         
         
-        
-        
+    
