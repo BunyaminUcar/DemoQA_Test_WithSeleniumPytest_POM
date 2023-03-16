@@ -10,19 +10,19 @@ from pages.alerts import AlertsPage
 
 @pytest.mark.usefixtures("setup")
 class TestAlerts():
-   
+    
     def test_catch_alert(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/alerts")
         alerts=AlertsPage(self.driver)        
         alerts.click_js_alert_button()      
         message=alerts.catch_alert()
         time.sleep(1)#wait for alert to appear       
-        alerts.accept_alert()
+        alerts.alert_accept()
         assert message=="You clicked a button"
- 
+    
     def test_alert_box_confirm(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/alerts")
         alert=AlertsPage(self.driver)
         alert.click_js_confirm_button_to_running_alert()
@@ -34,7 +34,7 @@ class TestAlerts():
         assert alert_text=="Do you confirm action?"
     
     def test_alert_box_not_confirm(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/alerts") 
         alert=AlertsPage(self.driver)
         alert.click_js_confirm_button_to_running_alert()
@@ -46,7 +46,7 @@ class TestAlerts():
         assert alert_text=="Do you confirm action?" 
    
     def test_alert_box_send_prompt(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/alerts")
         alert=AlertsPage(self.driver)
         alert.click_js_prompt_button()
@@ -56,7 +56,7 @@ class TestAlerts():
         assert result=="You entered "+key
        
     def test_alert_box_send_prompt_and_cancel(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/alerts")
         alert=AlertsPage(self.driver)
         alert.click_js_prompt_button()
@@ -68,7 +68,7 @@ class TestAlerts():
         assert result==False
        
     def test_small_modal_content(self):
-        self.driver.implicitly_wait(10)
+        
         self.driver.get("https://demoqa.com/modal-dialogs")
         modal=AlertsPage(self.driver)
         modal.click_small_modal_button()

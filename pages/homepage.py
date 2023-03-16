@@ -1,22 +1,23 @@
 from selenium.webdriver.common.by import By
 
-class HomePage():
+from pages.PageBase import PageBase
+
+class HomePage(PageBase):
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
     MENU_ITEMS = (By.XPATH, "//div/h5")
     HEADER_TITLE = (By.XPATH, "//div[@class='main-header']")
     
     def get_menu_items(self):
-        items=self.driver.find_elements(*HomePage.MENU_ITEMS)
-        menuler=[]
-        for _ in items:
-            menuler.append(_.text)      
-        return menuler
+        return self.items_list(HomePage.MENU_ITEMS)
+        
+       
     
     def click_menu_item(self):
-        self.driver.find_element(*HomePage.MENU_ITEMS).click()
+        self.wait_for_element_w(HomePage.MENU_ITEMS).click()
         
     def get_title(self):
-        return self.driver.find_element(*HomePage.HEADER_TITLE).text
+        return self.wait_for_element_w(HomePage.HEADER_TITLE).text
         
     
