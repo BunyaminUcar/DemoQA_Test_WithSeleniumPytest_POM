@@ -11,8 +11,8 @@ class AlertsPage(PageBase):
         self.driver = driver
     
     ALERT_BUTTON=(By.ID,"alertButton")
-    CONFİRM_BUTTON=(By.XPATH,"//*[@id='confirmButton']")
-    CONFİRM_RESULT=(By.XPATH,"//*[@id='confirmResult']")
+    CONFIRM_BUTTON=(By.XPATH,"//*[@id='confirmButton']")
+    CONFIRM_RESULT=(By.XPATH,"//*[@id='confirmResult']")
     PROMPT_RESULTS=(By.XPATH,"//*[@id='promptResult']")
     PROMPT_BUTTON=(By.XPATH,"//*[@id='promtButton']")
     SMALL_MODAL_BUTTON=(By.XPATH,"//*[@id='showSmallModal']")
@@ -27,13 +27,13 @@ class AlertsPage(PageBase):
         return alert.text
         
     def click_js_confirm_button_to_running_alert(self):
-        self.wait_for_element_w(AlertsPage.CONFİRM_BUTTON).click()
+        self.wait_for_element_w(AlertsPage.CONFIRM_BUTTON).click()
         
     def alert_accept(self):
         self.driver.switch_to.alert.accept()
         
     def alert_confirm_text(self):
-        return self.driver.find_element(*AlertsPage.CONFİRM_RESULT).text
+        return self.driver.find_element(*AlertsPage.CONFIRM_RESULT).text
     
     def alert_not_confirm(self):
         self.driver.switch_to.alert.dismiss()
